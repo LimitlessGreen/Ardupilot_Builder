@@ -58,20 +58,23 @@ fi
 pushd ardupilot
 
     waf="$PWD/modules/waf/waf-light"
-    ${waf} configure --board=navio2
 
+    ${waf} configure --board=navio2
     git checkout ${ARDUPILOT_COPTER_BRANCH}
     git submodule update --init --recursive
     ${waf} copter
 
+    ${waf} configure --board=navio2
     git checkout ${ARDUPILOT_PLANE_BRANCH}
     git submodule update --init --recursive
     ${waf} plane
 
+    ${waf} configure --board=navio2
     git checkout ${ARDUPILOT_ROVER_BRANCH}
     git submodule update --init --recursive
     ${waf} rover
 
+    ${waf} configure --board=navio2
     git checkout ${ARDUPILOT_SUB_BRANCH}
     git submodule update --init --recursive
     ${waf} sub
